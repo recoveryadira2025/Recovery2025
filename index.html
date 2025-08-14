@@ -604,7 +604,7 @@
     <div id="dashboard-page" class="page">
         <div class="container">
             <div class="header">
-                <h1>DASHBOARD RECOVERY</h1>
+                <h1>LOAN RECOVERY SUPPORT SYSTEMS</h1>
                 <div class="user-profile" onclick="logout()">
                     <div class="user-icon">👤</div>
                     <span id="current-user">USER TEST 1</span>
@@ -640,6 +640,13 @@
                     <input type="text" id="no-ticket" placeholder="Masukkan nomor ticket">
                 </div>
                 <div class="input-group">
+                    <label for="keterangan">KETERANGAN</label>
+                    <input type="text" id="keterangan" placeholder="Masukkan keterangan (opsional)">
+                </div>
+            </div>
+            
+            <div class="input-section">
+                <div class="input-group">
                     <label for="status">STATUS</label>
                     <div class="status-section">
                         <select id="status" class="status-dropdown">
@@ -650,6 +657,9 @@
                         </select>
                         <button class="submit-btn" onclick="submitReport()">SUBMIT</button>
                     </div>
+                </div>
+                <div class="input-group">
+                    <!-- Empty space for alignment -->
                 </div>
             </div>
 
@@ -662,6 +672,7 @@
                             <th>RECO OFFICER</th>
                             <th>ISSUE</th>
                             <th>NO TICKET</th>
+                            <th>KETERANGAN</th>
                             <th>STATUS</th>
                         </tr>
                     </thead>
@@ -970,6 +981,7 @@
 
         function submitReport() {
             const noTicket = document.getElementById('no-ticket').value;
+            const keterangan = document.getElementById('keterangan').value;
             const status = document.getElementById('status').value;
 
             if (!selectedReco) {
@@ -994,6 +1006,7 @@
                 recoOfficer: selectedReco,
                 issue: selectedIssue,
                 noTicket: noTicket,
+                keterangan: keterangan || '', // Default empty string if not filled
                 status: status,
                 timestamp: new Date().toISOString()
             };
@@ -1003,6 +1016,7 @@
 
             // Reset form
             document.getElementById('no-ticket').value = '';
+            document.getElementById('keterangan').value = '';
             document.getElementById('status').value = '';
             selectedReco = null;
             selectedRecoNik = null;
@@ -1407,5 +1421,4 @@
         });
     </script>
 </body>
-
 </html>
